@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://vk01s1bn55tt" path="res://ASSETS/Beer.png" id="1_tdag0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
+friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh48"]
 size = Vector2(10, 18)
 
 [node name="Drink" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_u2puk")
-gravity_scale = 0.0
 script = ExtResource("1_drgn2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

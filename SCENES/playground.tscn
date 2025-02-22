@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
 [ext_resource type="Texture2D" uid="uid://deffeqjryx2kp" path="res://ASSETS/Patron/Patron.png" id="2_j71j8"]
-[ext_resource type="Texture2D" uid="uid://8eisahugqaf1" path="res://ASSETS/Bar.png" id="3_4o0i6"]
 [ext_resource type="Texture2D" uid="uid://frljarqatvlr" path="res://ASSETS/Tap.png" id="4_dp6a0"]
 [ext_resource type="PackedScene" uid="uid://drl0fag3aodkn" path="res://SCENES/drink.tscn" id="5_ucqmk"]
+[ext_resource type="PackedScene" uid="uid://bask1qktq747g" path="res://SCENES/bar.tscn" id="5_ur80v"]
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
 
 [node name="Playground" type="Node"]
@@ -46,9 +46,8 @@ texture = ExtResource("2_j71j8")
 
 [node name="Bartop" type="Node2D" parent="."]
 
-[node name="Bar" type="Sprite2D" parent="Bartop"]
-position = Vector2(320, 180)
-texture = ExtResource("3_4o0i6")
+[node name="Bar" parent="Bartop" instance=ExtResource("5_ur80v")]
+position = Vector2(280, 180)
 
 [node name="Tap" type="Sprite2D" parent="Bartop"]
 position = Vector2(20, 148)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bask1qktq747g"]
+
+[ext_resource type="Texture2D" uid="uid://8eisahugqaf1" path="res://ASSETS/Bar.png" id="1_0lxil"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i58nl"]
+radius = 8.0
+height = 640.0
+
+[node name="Bar" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0lxil")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i58nl")
