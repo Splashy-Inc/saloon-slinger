@@ -11,7 +11,6 @@ var cur_drink: Drink
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -21,10 +20,14 @@ func _input(event: InputEvent) -> void:
 		cur_drink = _spawn_drink()
 	
 	if event.is_action_released("slide") and cur_drink:
-		cur_drink.slide(Vector2(600,0), drink_stop_point.global_position)
+		cur_drink.slide(600)
 
 func _spawn_drink():
 	var drink = drink_scene.instantiate()
-	drink.global_position = drink_spawn_point.global_position
-	drinks_layer.add_child(drink)
-	return drink
+	if drink is Drink:
+		drink.initialize(drink_stop_point.global_position)
+		drink.global_position = drink_spawn_point.global_position
+		drinks_layer.add_child(drink)
+		return drink
+	else:
+		return null
