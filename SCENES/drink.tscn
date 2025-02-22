@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://drl0fag3aodkn"]
+[gd_scene load_steps=5 format=3 uid="uid://drl0fag3aodkn"]
 
+[ext_resource type="Script" path="res://SCRIPTS/drink.gd" id="1_drgn2"]
 [ext_resource type="Texture2D" uid="uid://vk01s1bn55tt" path="res://ASSETS/Beer.png" id="1_tdag0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
@@ -10,6 +11,7 @@ size = Vector2(10, 18)
 [node name="Drink" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_u2puk")
 gravity_scale = 0.0
+script = ExtResource("1_drgn2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 0)

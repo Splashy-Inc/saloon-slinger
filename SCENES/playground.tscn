@@ -10,6 +10,7 @@
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_5e8d0")
+drink_scene = ExtResource("5_ucqmk")
 
 [node name="BackGround" type="Sprite2D" parent="."]
 position = Vector2(320, 180)
@@ -47,7 +48,7 @@ texture = ExtResource("3_4o0i6")
 position = Vector2(20, 148)
 texture = ExtResource("4_dp6a0")
 
-[node name="Drink" parent="." instance=ExtResource("5_ucqmk")]
+[node name="DrinkSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(22, 170)
 
 [node name="Bartender" type="Sprite2D" parent="."]

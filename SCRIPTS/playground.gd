@@ -1,5 +1,9 @@
 extends Node
 
+@export var drink_scene: PackedScene
+
+var cur_drink: Drink
+@onready var drink_spawn_point: Marker2D = $DrinkSpawnPoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,8 +12,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print($Drink.linear_velocity)
+	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("slide"):
-		$Drink.apply_impulse(Vector2(100,0))
+	if event.is_action_pressed("slide"):
+		cur_drink = _spawn_drink()
+	
+	if event.is_action_released("slide") and cur_drink:
+		cur_drink.apply_impulse(Vector2(100,0))
+
+func _spawn_drink():
+	var drink = drink_scene.instantiate()
+	drink.global_position = drink_spawn_point.global_position
+	add_child(drink)
+	return drink
