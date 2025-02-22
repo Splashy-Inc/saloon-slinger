@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 		cur_drink = _spawn_drink()
 	
 	if event.is_action_released("slide") and cur_drink:
-		cur_drink.apply_impulse(Vector2(100,0))
+		cur_drink.apply_impulse(Vector2(80,0))
 
 func _spawn_drink():
 	var drink = drink_scene.instantiate()
