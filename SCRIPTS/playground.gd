@@ -8,4 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	print($Drink.linear_velocity)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("slide"):
+		$Drink.apply_impulse(Vector2(100,0))
