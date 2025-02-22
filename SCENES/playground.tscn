@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhvgc0glasyim"]
+
+[ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
+[ext_resource type="Texture2D" uid="uid://deffeqjryx2kp" path="res://ASSETS/Patron/Patron.png" id="2_j71j8"]
+[ext_resource type="Texture2D" uid="uid://8eisahugqaf1" path="res://ASSETS/Bar.png" id="3_4o0i6"]
+[ext_resource type="Texture2D" uid="uid://frljarqatvlr" path="res://ASSETS/Tap.png" id="4_dp6a0"]
+[ext_resource type="Texture2D" uid="uid://vk01s1bn55tt" path="res://ASSETS/Beer.png" id="5_ymayf"]
+[ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
+
+[node name="Playground" type="Node"]
+
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_thoma")
+
+[node name="Patron" type="Sprite2D" parent="."]
+position = Vector2(180, 152)
+texture = ExtResource("2_j71j8")
+
+[node name="Patron2" type="Sprite2D" parent="."]
+position = Vector2(252, 152)
+texture = ExtResource("2_j71j8")
+
+[node name="Patron3" type="Sprite2D" parent="."]
+position = Vector2(324, 152)
+texture = ExtResource("2_j71j8")
+
+[node name="Patron4" type="Sprite2D" parent="."]
+position = Vector2(396, 152)
+texture = ExtResource("2_j71j8")
+
+[node name="Patron5" type="Sprite2D" parent="."]
+position = Vector2(468, 152)
+texture = ExtResource("2_j71j8")
+
+[node name="Patron6" type="Sprite2D" parent="."]
+position = Vector2(540, 152)
+texture = ExtResource("2_j71j8")
+
+[node name="Bar" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("3_4o0i6")
+
+[node name="Tap" type="Sprite2D" parent="."]
+position = Vector2(20, 148)
+texture = ExtResource("4_dp6a0")
+
+[node name="Beer" type="Sprite2D" parent="."]
+position = Vector2(22, 170)
+texture = ExtResource("5_ymayf")
+
+[node name="Splorsh" type="Sprite2D" parent="."]
+position = Vector2(47, 194)
+texture = ExtResource("6_kw675")
