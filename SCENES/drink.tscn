@@ -5,7 +5,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh48"]
-size = Vector2(11, 17)
+size = Vector2(10, 18)
 
 [node name="Drink" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_u2puk")
@@ -16,5 +16,4 @@ position = Vector2(1, 0)
 texture = ExtResource("1_tdag0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_tfh48")
