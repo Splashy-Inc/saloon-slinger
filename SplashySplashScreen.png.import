@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciqnh8pjlkdri"
-path="res://.godot/imported/PatronDrink.png-7830dab5cbbf9260f806f4f642fe78de.ctex"
+uid="uid://dwioj7irbg406"
+path="res://.godot/imported/SplashySplashScreen.png-81492ad96b61b077ee77b36b3d183f0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASSETS/Patron/PatronDrink.png"
-dest_files=["res://.godot/imported/PatronDrink.png-7830dab5cbbf9260f806f4f642fe78de.ctex"]
+source_file="res://SplashySplashScreen.png"
+dest_files=["res://.godot/imported/SplashySplashScreen.png-81492ad96b61b077ee77b36b3d183f0c.ctex"]
 
 [params]
 
