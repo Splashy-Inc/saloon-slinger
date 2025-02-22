@@ -3,7 +3,8 @@ extends Node
 @export var drink_scene: PackedScene
 
 var cur_drink: Drink
-@onready var drink_spawn_point: Marker2D = $DrinkSpawnPoint
+@onready var drink_spawn_point: Marker2D = $Bartop/DrinkSpawnPoint
+@onready var drinks_layer: Node2D = $Bartop/Drinks
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,5 +25,5 @@ func _input(event: InputEvent) -> void:
 func _spawn_drink():
 	var drink = drink_scene.instantiate()
 	drink.global_position = drink_spawn_point.global_position
-	add_child(drink)
+	drinks_layer.add_child(drink)
 	return drink

@@ -12,45 +12,55 @@
 script = ExtResource("1_5e8d0")
 drink_scene = ExtResource("5_ucqmk")
 
-[node name="BackGround" type="Sprite2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BackGround" type="Sprite2D" parent="Background"]
 position = Vector2(320, 180)
 texture = ExtResource("1_thoma")
 
-[node name="Patron" type="Sprite2D" parent="."]
+[node name="Patrons" type="Node2D" parent="."]
+
+[node name="Patron" type="Sprite2D" parent="Patrons"]
 position = Vector2(180, 152)
 texture = ExtResource("2_j71j8")
 
-[node name="Patron2" type="Sprite2D" parent="."]
+[node name="Patron2" type="Sprite2D" parent="Patrons"]
 position = Vector2(252, 152)
 texture = ExtResource("2_j71j8")
 
-[node name="Patron3" type="Sprite2D" parent="."]
+[node name="Patron3" type="Sprite2D" parent="Patrons"]
 position = Vector2(324, 152)
 texture = ExtResource("2_j71j8")
 
-[node name="Patron4" type="Sprite2D" parent="."]
+[node name="Patron4" type="Sprite2D" parent="Patrons"]
 position = Vector2(396, 152)
 texture = ExtResource("2_j71j8")
 
-[node name="Patron5" type="Sprite2D" parent="."]
+[node name="Patron5" type="Sprite2D" parent="Patrons"]
 position = Vector2(468, 152)
 texture = ExtResource("2_j71j8")
 
-[node name="Patron6" type="Sprite2D" parent="."]
+[node name="Patron6" type="Sprite2D" parent="Patrons"]
 position = Vector2(540, 152)
 texture = ExtResource("2_j71j8")
 
-[node name="Bar" type="Sprite2D" parent="."]
+[node name="Bartop" type="Node2D" parent="."]
+
+[node name="Bar" type="Sprite2D" parent="Bartop"]
 position = Vector2(320, 180)
 texture = ExtResource("3_4o0i6")
 
-[node name="Tap" type="Sprite2D" parent="."]
+[node name="Tap" type="Sprite2D" parent="Bartop"]
 position = Vector2(20, 148)
 texture = ExtResource("4_dp6a0")
 
-[node name="DrinkSpawnPoint" type="Marker2D" parent="."]
+[node name="DrinkSpawnPoint" type="Marker2D" parent="Bartop"]
 position = Vector2(22, 170)
 
-[node name="Bartender" type="Sprite2D" parent="."]
+[node name="Drinks" type="Node2D" parent="Bartop"]
+
+[node name="Bartender" type="Node2D" parent="."]
+
+[node name="Bartender" type="Sprite2D" parent="Bartender"]
 position = Vector2(47, 194)
 texture = ExtResource("6_kw675")
