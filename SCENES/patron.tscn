@@ -1,6 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://skhuah8qm0ks"]
+[gd_scene load_steps=5 format=3 uid="uid://skhuah8qm0ks"]
 
 [ext_resource type="Texture2D" uid="uid://deffeqjryx2kp" path="res://ASSETS/Patron/Patron.png" id="1_menu3"]
+[ext_resource type="Texture2D" uid="uid://ciqnh8pjlkdri" path="res://ASSETS/Patron/PatronDrink.png" id="2_vrhtj"]
+[ext_resource type="Script" path="res://SCRIPTS/patron.gd" id="3_51jdi"]
 
-[node name="Patron" type="Sprite2D"]
-texture = ExtResource("1_menu3")
+[sub_resource type="SpriteFrames" id="SpriteFrames_rg7pq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_menu3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vrhtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_menu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vrhtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_menu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vrhtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_menu3")
+}],
+"loop": false,
+"name": &"drink",
+"speed": 2.0
+}]
+
+[node name="Patron" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rg7pq")
+animation = &"drink"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("3_51jdi")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
