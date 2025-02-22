@@ -18,11 +18,11 @@ func _physics_process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(linear_velocity)
+	pass
 
 func initialize(stop_point: Vector2):
 	var distance_x = abs(stop_point.x - global_position.x)
 	drag = Vector2(-(max_impulse * max_impulse / (2 * distance_x)), 0)
 
 func slide(impulse):
-	apply_impulse(Vector2(impulse, 0))
+	apply_impulse(Vector2(clamp(impulse,0,max_impulse*2), 0))

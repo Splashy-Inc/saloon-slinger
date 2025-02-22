@@ -6,6 +6,8 @@ var cur_drink: Drink
 @onready var drink_spawn_point: Marker2D = $Bartop/DrinkSpawnPoint
 @onready var drink_stop_point: Marker2D = $Bartop/DrinkStopPoint
 @onready var drinks_layer: Node2D = $Bartop/Drinks
+var previous_cursor_x = 0
+@onready var viewport = get_viewport()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,14 +15,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_pressed("slide"):
+		previous_cursor_x = viewport.get_mouse_position().x
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("slide"):
 		cur_drink = _spawn_drink()
 	
 	if event.is_action_released("slide") and cur_drink:
-		cur_drink.slide(600)
+		var player_impulse_x = viewport.get_mouse_position().x - previous_cursor_x
+		cur_drink.slide(player_impulse_x * 20)
 
 func _spawn_drink():
 	var drink = drink_scene.instantiate()
