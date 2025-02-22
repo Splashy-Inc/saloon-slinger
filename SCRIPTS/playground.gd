@@ -5,7 +5,7 @@ extends Node
 var cur_drink: Drink
 @onready var drink_spawn_point: Marker2D = $Bartop/DrinkSpawnPoint
 @onready var drink_stop_point: Marker2D = $Bartop/DrinkStopPoint
-@onready var drinks_layer: Node2D = $Bartop/Drinks
+@onready var drinks_layer: Node = $Bartop/Drinks
 var previous_cursor_x = 0
 @onready var viewport = get_viewport()
 

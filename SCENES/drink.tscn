@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://drl0fag3aodkn"]
 
 [ext_resource type="Script" path="res://SCRIPTS/drink.gd" id="1_drgn2"]
-[ext_resource type="Texture2D" uid="uid://vk01s1bn55tt" path="res://ASSETS/Beer.png" id="1_tdag0"]
+[ext_resource type="Texture2D" uid="uid://dcs52xkxg544l" path="res://ASSETS/Beer/Beer.png" id="2_sl1cb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
 friction = 0.0
@@ -15,7 +15,7 @@ script = ExtResource("1_drgn2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
-texture = ExtResource("1_tdag0")
+texture = ExtResource("2_sl1cb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tfh48")

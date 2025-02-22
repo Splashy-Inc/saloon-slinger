@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
 [ext_resource type="Texture2D" uid="uid://deffeqjryx2kp" path="res://ASSETS/Patron/Patron.png" id="2_j71j8"]
-[ext_resource type="Texture2D" uid="uid://frljarqatvlr" path="res://ASSETS/Tap.png" id="4_dp6a0"]
 [ext_resource type="PackedScene" uid="uid://drl0fag3aodkn" path="res://SCENES/drink.tscn" id="5_ucqmk"]
 [ext_resource type="PackedScene" uid="uid://bask1qktq747g" path="res://SCENES/bar.tscn" id="5_ur80v"]
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
+[ext_resource type="Texture2D" uid="uid://djkhxyhac8654" path="res://ASSETS/TapOff.png" id="6_mxud1"]
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_5e8d0")
@@ -19,6 +19,7 @@ position = Vector2(320, 180)
 texture = ExtResource("1_thoma")
 
 [node name="Patrons" type="Node2D" parent="."]
+position = Vector2(0, 75)
 
 [node name="Patron" type="Sprite2D" parent="Patrons"]
 position = Vector2(180, 152)
@@ -45,23 +46,25 @@ position = Vector2(540, 152)
 texture = ExtResource("2_j71j8")
 
 [node name="Bartop" type="Node2D" parent="."]
+position = Vector2(0, 75)
 
 [node name="Bar" parent="Bartop" instance=ExtResource("5_ur80v")]
-position = Vector2(280, 180)
+position = Vector2(319, 180)
 
 [node name="Tap" type="Sprite2D" parent="Bartop"]
 position = Vector2(20, 148)
-texture = ExtResource("4_dp6a0")
+texture = ExtResource("6_mxud1")
 
 [node name="DrinkSpawnPoint" type="Marker2D" parent="Bartop"]
 position = Vector2(22, 170)
 
-[node name="Drinks" type="Node2D" parent="Bartop"]
+[node name="Drinks" type="Node" parent="Bartop"]
 
 [node name="DrinkStopPoint" type="Marker2D" parent="Bartop"]
 position = Vector2(600, 170)
 
 [node name="Bartender" type="Node2D" parent="."]
+position = Vector2(0, 75)
 
 [node name="Bartender" type="Sprite2D" parent="Bartender"]
 position = Vector2(47, 194)
