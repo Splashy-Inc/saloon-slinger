@@ -4,6 +4,7 @@ extends Node
 
 var cur_drink: Drink
 @onready var drink_spawn_point: Marker2D = $Bartop/DrinkSpawnPoint
+@onready var drink_stop_point: Marker2D = $Bartop/DrinkStopPoint
 @onready var drinks_layer: Node2D = $Bartop/Drinks
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +21,7 @@ func _input(event: InputEvent) -> void:
 		cur_drink = _spawn_drink()
 	
 	if event.is_action_released("slide") and cur_drink:
-		cur_drink.apply_impulse(Vector2(80,0))
+		cur_drink.slide(Vector2(600,0), drink_stop_point.global_position)
 
 func _spawn_drink():
 	var drink = drink_scene.instantiate()

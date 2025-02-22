@@ -59,6 +59,9 @@ position = Vector2(22, 170)
 
 [node name="Drinks" type="Node2D" parent="Bartop"]
 
+[node name="DrinkStopPoint" type="Marker2D" parent="Bartop"]
+position = Vector2(600, 170)
+
 [node name="Bartender" type="Node2D" parent="."]
 
 [node name="Bartender" type="Sprite2D" parent="Bartender"]
