@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6hahjreqww73"]
 
-[ext_resource type="Script" path="res://start_menu.gd" id="1_lvjy2"]
+[ext_resource type="Script" path="res://SCRIPTS/start_menu.gd" id="1_lvjy2"]
 [ext_resource type="Texture2D" uid="uid://bmm65txmgfwt6" path="res://ASSETS/BG4MainMenu.png" id="2_vudfm"]
 
 [node name="StartMenu" type="Control"]
