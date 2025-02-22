@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://skhuah8qm0ks"]
+
+[ext_resource type="Texture2D" uid="uid://deffeqjryx2kp" path="res://ASSETS/Patron/Patron.png" id="1_menu3"]
+
+[node name="Patron" type="Sprite2D"]
+texture = ExtResource("1_menu3")
