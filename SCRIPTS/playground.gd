@@ -23,11 +23,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("slide"):
 		cur_drink = _spawn_drink()
 		$Bartender/Bartender.play("tap")
+		$Bartop/Tap.play("pour")
 	
 	if event.is_action_released("slide") and cur_drink:
 		var player_impulse_x = viewport.get_mouse_position().x - previous_cursor_x
 		cur_drink.slide(player_impulse_x * 20)
 		$Bartender/Bartender.play("sling")
+		$Bartop/Tap.play("idle")
 
 func _spawn_drink():
 	var drink = drink_scene.instantiate()

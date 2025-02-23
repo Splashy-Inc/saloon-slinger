@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=14 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
@@ -8,8 +8,28 @@
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
 [ext_resource type="Texture2D" uid="uid://dvmhs5l17ok6o" path="res://ASSETS/TapOff.png" id="6_mxud1"]
 [ext_resource type="Texture2D" uid="uid://d1jiwjtrtbsy3" path="res://ASSETS/Door.png" id="7_eajuj"]
+[ext_resource type="Texture2D" uid="uid://cb82fparxttyy" path="res://ASSETS/TapOn.png" id="7_i3nhs"]
 [ext_resource type="Texture2D" uid="uid://blaoqyvlttjou" path="res://ASSETS/Player/SplorshSling.png" id="9_jygwl"]
 [ext_resource type="Texture2D" uid="uid://dcjtm7ykd40o0" path="res://ASSETS/Player/SplorshTap.png" id="10_e26ao"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbf1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mxud1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i3nhs")
+}],
+"loop": true,
+"name": &"pour",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ixy6"]
 animations = [{
@@ -62,9 +82,11 @@ position = Vector2(0, 75)
 [node name="Bar" parent="Bartop" instance=ExtResource("5_ur80v")]
 position = Vector2(319, 180)
 
-[node name="Tap" type="Sprite2D" parent="Bartop"]
+[node name="Tap" type="AnimatedSprite2D" parent="Bartop"]
 position = Vector2(20, 148)
-texture = ExtResource("6_mxud1")
+sprite_frames = SubResource("SpriteFrames_tbf1d")
+animation = &"pour"
+autoplay = "idle"
 
 [node name="DrinkSpawnPoint" type="Marker2D" parent="Bartop"]
 position = Vector2(22, 170)
