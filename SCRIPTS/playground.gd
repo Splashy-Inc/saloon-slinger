@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		cur_drink = _spawn_drink()
 		cur_drink.filled.connect(_on_drink_filled)
 		$Bartop/Tap.play("pour")
+		$Bartop/Tap/AudioStreamPlayer.play()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("slide"):
@@ -58,6 +59,7 @@ func _spawn_patron(spawn_point: Vector2, bar_slot: BarSlot):
 func _on_drink_filled(drink: Drink):
 	if drink == cur_drink:
 		$Bartop/Tap.play("idle")
+		$Bartop/Tap/AudioStreamPlayer.stop()
 
 func _on_bartender_animation_finished() -> void:
 	$Bartender/Bartender.play("default")

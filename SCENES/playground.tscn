@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=18 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvmhs5l17ok6o" path="res://ASSETS/TapOff.png" id="6_mxud1"]
 [ext_resource type="Texture2D" uid="uid://d1jiwjtrtbsy3" path="res://ASSETS/Door.png" id="7_eajuj"]
 [ext_resource type="Texture2D" uid="uid://cb82fparxttyy" path="res://ASSETS/TapOn.png" id="7_i3nhs"]
+[ext_resource type="AudioStream" uid="uid://b6t1mynwmg0y6" path="res://ASSETS/Audio/water_leak.ogg" id="8_untao"]
 [ext_resource type="Texture2D" uid="uid://blaoqyvlttjou" path="res://ASSETS/Player/SplorshSling.png" id="9_jygwl"]
 [ext_resource type="Texture2D" uid="uid://dcjtm7ykd40o0" path="res://ASSETS/Player/SplorshTap.png" id="10_e26ao"]
 [ext_resource type="PackedScene" uid="uid://bxwj3vvikmli0" path="res://SCENES/hud.tscn" id="12_gvr3o"]
@@ -31,6 +32,10 @@ animations = [{
 "name": &"pour",
 "speed": 5.0
 }]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lp4cc"]
+streams_count = 1
+stream_0/stream = ExtResource("8_untao")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ixy6"]
 animations = [{
@@ -89,6 +94,11 @@ position = Vector2(20, 148)
 sprite_frames = SubResource("SpriteFrames_tbf1d")
 animation = &"pour"
 autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bartop/Tap"]
+stream = SubResource("AudioStreamRandomizer_lp4cc")
+volume_db = -14.81
+pitch_scale = 0.7
 
 [node name="DrinkSpawnPoint" type="Marker2D" parent="Bartop"]
 position = Vector2(22, 170)
