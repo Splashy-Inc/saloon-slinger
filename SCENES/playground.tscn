@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=12 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
@@ -8,6 +8,38 @@
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
 [ext_resource type="Texture2D" uid="uid://dvmhs5l17ok6o" path="res://ASSETS/TapOff.png" id="6_mxud1"]
 [ext_resource type="Texture2D" uid="uid://d1jiwjtrtbsy3" path="res://ASSETS/Door.png" id="7_eajuj"]
+[ext_resource type="Texture2D" uid="uid://blaoqyvlttjou" path="res://ASSETS/Player/SplorshSling.png" id="9_jygwl"]
+[ext_resource type="Texture2D" uid="uid://dcjtm7ykd40o0" path="res://ASSETS/Player/SplorshTap.png" id="10_e26ao"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ixy6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kw675")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jygwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kw675")
+}],
+"loop": false,
+"name": &"sling",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e26ao")
+}],
+"loop": true,
+"name": &"tap",
+"speed": 5.0
+}]
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_5e8d0")
@@ -50,8 +82,10 @@ texture = ExtResource("7_eajuj")
 [node name="Bartender" type="Node2D" parent="."]
 position = Vector2(0, 75)
 
-[node name="Bartender" type="Sprite2D" parent="Bartender"]
+[node name="Bartender" type="AnimatedSprite2D" parent="Bartender"]
 position = Vector2(47, 194)
-texture = ExtResource("6_kw675")
+sprite_frames = SubResource("SpriteFrames_8ixy6")
+animation = &"sling"
+autoplay = "default"
 
 [connection signal="bar_slot_emptied" from="Bartop/Bar" to="." method="_on_bar_slot_emptied"]
