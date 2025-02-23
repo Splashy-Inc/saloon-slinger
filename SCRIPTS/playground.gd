@@ -1,6 +1,7 @@
 extends Node
 
 @export var drink_scene: PackedScene
+@export var patron_scene: PackedScene
 
 var cur_drink: Drink
 @onready var drink_spawn_point: Marker2D = $Bartop/DrinkSpawnPoint
@@ -35,3 +36,14 @@ func _spawn_drink():
 		return drink
 	else:
 		return null
+
+func _on_bar_slot_emptied(bar_slot: BarSlot) -> void:
+	_spawn_patron($Bartop/Door.global_position, bar_slot)
+	
+func _spawn_patron(spawn_point: Vector2, bar_slot: BarSlot):
+	var new_patron = patron_scene.instantiate()
+	if new_patron is Patron:
+		$Patrons.add_child(new_patron)
+		new_patron.global_position = spawn_point
+		new_patron.bar_slot = bar_slot
+	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=9 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
+[ext_resource type="PackedScene" uid="uid://skhuah8qm0ks" path="res://SCENES/patron.tscn" id="4_00h3x"]
 [ext_resource type="PackedScene" uid="uid://drl0fag3aodkn" path="res://SCENES/drink.tscn" id="5_ucqmk"]
 [ext_resource type="PackedScene" uid="uid://bask1qktq747g" path="res://SCENES/bar.tscn" id="5_ur80v"]
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
@@ -11,8 +12,10 @@
 [node name="Playground" type="Node"]
 script = ExtResource("1_5e8d0")
 drink_scene = ExtResource("5_ucqmk")
+patron_scene = ExtResource("4_00h3x")
 
 [node name="Background" type="Node2D" parent="."]
+z_index = -1
 
 [node name="BackGround" type="Sprite2D" parent="Background"]
 position = Vector2(320, 180)
@@ -40,6 +43,7 @@ position = Vector2(22, 170)
 position = Vector2(600, 170)
 
 [node name="Door" type="Sprite2D" parent="Bartop"]
+z_index = -1
 position = Vector2(409, -35)
 texture = ExtResource("7_eajuj")
 
@@ -49,3 +53,5 @@ position = Vector2(0, 75)
 [node name="Bartender" type="Sprite2D" parent="Bartender"]
 position = Vector2(47, 194)
 texture = ExtResource("6_kw675")
+
+[connection signal="bar_slot_emptied" from="Bartop/Bar" to="." method="_on_bar_slot_emptied"]

@@ -2,6 +2,8 @@ extends Node2D
 
 class_name BarSlot
 
+signal emptied
+
 var drinks = []
 var drink_queue = []
 
@@ -32,3 +34,6 @@ func get_drink():
 	if not drink_queue.is_empty():
 		var drink = drink_queue.pop_front()
 		return drink
+
+func _on_patron_finished():
+	emptied.emit(self)
