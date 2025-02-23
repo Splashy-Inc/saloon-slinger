@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=16 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cb82fparxttyy" path="res://ASSETS/TapOn.png" id="7_i3nhs"]
 [ext_resource type="Texture2D" uid="uid://blaoqyvlttjou" path="res://ASSETS/Player/SplorshSling.png" id="9_jygwl"]
 [ext_resource type="Texture2D" uid="uid://dcjtm7ykd40o0" path="res://ASSETS/Player/SplorshTap.png" id="10_e26ao"]
+[ext_resource type="PackedScene" uid="uid://bxwj3vvikmli0" path="res://SCENES/hud.tscn" id="12_gvr3o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tbf1d"]
 animations = [{
@@ -118,6 +119,8 @@ offset_right = 202.0
 offset_bottom = 104.0
 text = "Click + drag or swipe right"
 label_settings = SubResource("LabelSettings_xbnqf")
+
+[node name="HUD" parent="." instance=ExtResource("12_gvr3o")]
 
 [connection signal="bar_slot_emptied" from="Bartop/Bar" to="." method="_on_bar_slot_emptied"]
 [connection signal="animation_finished" from="Bartender/Bartender" to="." method="_on_bartender_animation_finished"]

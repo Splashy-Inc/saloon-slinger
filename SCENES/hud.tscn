@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp3uu7lijio8b"]
+[gd_scene load_steps=3 format=3 uid="uid://bxwj3vvikmli0"]
 
 [ext_resource type="Script" path="res://SCRIPTS/hud.gd" id="1_sx7pg"]
-[ext_resource type="PackedScene" uid="uid://bvq6kl67yrn5u" path="res://SCENES/pause_menu.tscn" id="2_l7tlb"]
+[ext_resource type="PackedScene" uid="uid://c3sldi7g5fcg6" path="res://SCENES/pause_menu.tscn" id="2_l7tlb"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
