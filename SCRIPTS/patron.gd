@@ -22,8 +22,9 @@ func _physics_process(delta: float) -> void:
 			var direction = global_position.direction_to(bar_slot.global_position)
 			velocity = direction * SPEED
 			animated_sprite_2d.play("walk")
-			if not $AudioStreamPlayer.playing:
-				$AudioStreamPlayer.play()
+			if not $Walking.playing:
+				$Walking.play()
+				$Drinking.stop()
 		elif get_parent() != bar_slot:
 			velocity = Vector2.ZERO
 			global_position = bar_slot.global_position
@@ -39,6 +40,9 @@ func drink():
 		print("Already drinking")
 	else:
 		animated_sprite_2d.play("drink")
+		$Walking.stop()
+		$Drinking.play()
+		
 
 func _on_animation_finished() -> void:
 	if animated_sprite_2d.animation == "drink":
