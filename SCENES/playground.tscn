@@ -97,7 +97,7 @@ autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bartop/Tap"]
 stream = SubResource("AudioStreamRandomizer_lp4cc")
-volume_db = -14.81
+volume_db = -7.0
 pitch_scale = 0.7
 
 [node name="DrinkSpawnPoint" type="Marker2D" parent="Bartop"]
