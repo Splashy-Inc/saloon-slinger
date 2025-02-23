@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6hahjreqww73"]
+
+[ext_resource type="Script" path="res://SCRIPTS/start_menu.gd" id="1_lvjy2"]
+[ext_resource type="Texture2D" uid="uid://bmm65txmgfwt6" path="res://ASSETS/BG4MainMenu.png" id="2_vudfm"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lvjy2")
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vudfm")
+
+[node name="Play_Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = 37.0
+offset_right = 250.0
+offset_bottom = 128.0
+grow_vertical = 2
+rotation = -0.352556
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[connection signal="pressed" from="Play_Button" to="." method="_on_play_button_pressed"]
