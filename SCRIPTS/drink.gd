@@ -2,9 +2,12 @@ extends RigidBody2D
 
 class_name Drink
 
+signal stopped
+
 var stop_point: Vector2
 var max_impulse = 600
 var drag = Vector2(-100, 0) # pixels/s/s
+var is_stopped = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,8 +16,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if linear_velocity.x > 0:
 		apply_force(drag)
+		is_stopped = false
 	else:
 		linear_velocity.x = 0
+		if not is_stopped:
+			stopped.emit(self)
+			is_stopped = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

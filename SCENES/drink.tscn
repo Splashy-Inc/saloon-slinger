@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://drl0fag3aodkn"]
 
 [ext_resource type="Script" path="res://SCRIPTS/drink.gd" id="1_drgn2"]
-[ext_resource type="Texture2D" uid="uid://dcs52xkxg544l" path="res://ASSETS/Beer/Beer.png" id="2_sl1cb"]
+[ext_resource type="Texture2D" uid="uid://b6de6dreirq6p" path="res://ASSETS/Beer/Beer.png" id="2_sl1cb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
 friction = 0.0
@@ -10,6 +10,7 @@ friction = 0.0
 size = Vector2(10, 18)
 
 [node name="Drink" type="RigidBody2D"]
+collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_u2puk")
 script = ExtResource("1_drgn2")
 

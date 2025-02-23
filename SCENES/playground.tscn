@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=8 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
-[ext_resource type="PackedScene" uid="uid://skhuah8qm0ks" path="res://SCENES/patron.tscn" id="4_00h3x"]
 [ext_resource type="PackedScene" uid="uid://drl0fag3aodkn" path="res://SCENES/drink.tscn" id="5_ucqmk"]
 [ext_resource type="PackedScene" uid="uid://bask1qktq747g" path="res://SCENES/bar.tscn" id="5_ur80v"]
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
-[ext_resource type="Texture2D" uid="uid://djkhxyhac8654" path="res://ASSETS/TapOff.png" id="6_mxud1"]
-[ext_resource type="Texture2D" uid="uid://bkut50eelmv54" path="res://ASSETS/Door.png" id="7_eajuj"]
+[ext_resource type="Texture2D" uid="uid://dvmhs5l17ok6o" path="res://ASSETS/TapOff.png" id="6_mxud1"]
+[ext_resource type="Texture2D" uid="uid://d1jiwjtrtbsy3" path="res://ASSETS/Door.png" id="7_eajuj"]
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_5e8d0")
@@ -21,24 +20,6 @@ texture = ExtResource("1_thoma")
 
 [node name="Patrons" type="Node2D" parent="."]
 position = Vector2(0, 75)
-
-[node name="Patron" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(180, 152)
-
-[node name="Patron7" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(252, 152)
-
-[node name="Patron8" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(324, 152)
-
-[node name="Patron9" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(396, 152)
-
-[node name="Patron10" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(468, 152)
-
-[node name="Patron11" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(540, 152)
 
 [node name="Bartop" type="Node2D" parent="."]
 position = Vector2(0, 75)
