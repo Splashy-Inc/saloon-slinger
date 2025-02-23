@@ -35,6 +35,7 @@ func initialize(stop_point: Vector2):
 func slide(impulse):
 	if $AnimatedSprite2D.animation == "default":
 		apply_impulse(Vector2(clamp(impulse,0,max_impulse*2), 0))
+		$AudioStreamPlayer.play()
 		return true
 	return false
 

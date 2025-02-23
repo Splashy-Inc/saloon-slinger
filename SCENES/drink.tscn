@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://drl0fag3aodkn"]
+[gd_scene load_steps=11 format=3 uid="uid://drl0fag3aodkn"]
 
 [ext_resource type="Script" path="res://SCRIPTS/drink.gd" id="1_drgn2"]
 [ext_resource type="Texture2D" uid="uid://b6de6dreirq6p" path="res://ASSETS/Beer/Beer.png" id="2_sl1cb"]
 [ext_resource type="Texture2D" uid="uid://pgtm6wlrh8uv" path="res://ASSETS/Beer/BeerFill1.png" id="3_p530h"]
 [ext_resource type="Texture2D" uid="uid://chkilcvn3pdr7" path="res://ASSETS/Beer/BeerFill2.png" id="4_f2ud1"]
 [ext_resource type="Texture2D" uid="uid://7xyngbvwxw8v" path="res://ASSETS/Beer/BeerFill3.png" id="5_rq3xt"]
+[ext_resource type="AudioStream" uid="uid://bwk7t0tyfog0u" path="res://ASSETS/Audio/DrinkSlide.mp3" id="6_ibikb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
 friction = 0.0
@@ -40,6 +41,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh48"]
 size = Vector2(10, 18)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ho2hy"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("6_ibikb")
+
 [node name="Drink" type="RigidBody2D"]
 collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_u2puk")
@@ -53,5 +59,10 @@ autoplay = "fill"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tfh48")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ho2hy")
+volume_db = -17.0
+pitch_scale = 1.1
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
