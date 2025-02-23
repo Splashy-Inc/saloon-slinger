@@ -3,6 +3,7 @@ extends RigidBody2D
 class_name Drink
 
 signal stopped
+signal filled
 
 var stop_point: Vector2
 var max_impulse = 600
@@ -32,4 +33,12 @@ func initialize(stop_point: Vector2):
 	drag = Vector2(-(max_impulse * max_impulse / (2 * distance_x)), 0)
 
 func slide(impulse):
-	apply_impulse(Vector2(clamp(impulse,0,max_impulse*2), 0))
+	if $AnimatedSprite2D.animation == "default":
+		apply_impulse(Vector2(clamp(impulse,0,max_impulse*2), 0))
+		return true
+	return false
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "fill":
+		$AnimatedSprite2D.play("default")
+		filled.emit(self)

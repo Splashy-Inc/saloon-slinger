@@ -44,13 +44,10 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_jygwl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_kw675")
 }],
 "loop": false,
 "name": &"sling",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -111,3 +108,4 @@ animation = &"sling"
 autoplay = "default"
 
 [connection signal="bar_slot_emptied" from="Bartop/Bar" to="." method="_on_bar_slot_emptied"]
+[connection signal="animation_finished" from="Bartender/Bartender" to="." method="_on_bartender_animation_finished"]

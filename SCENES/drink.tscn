@@ -1,10 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://drl0fag3aodkn"]
+[gd_scene load_steps=9 format=3 uid="uid://drl0fag3aodkn"]
 
 [ext_resource type="Script" path="res://SCRIPTS/drink.gd" id="1_drgn2"]
 [ext_resource type="Texture2D" uid="uid://b6de6dreirq6p" path="res://ASSETS/Beer/Beer.png" id="2_sl1cb"]
+[ext_resource type="Texture2D" uid="uid://pgtm6wlrh8uv" path="res://ASSETS/Beer/BeerFill1.png" id="3_p530h"]
+[ext_resource type="Texture2D" uid="uid://chkilcvn3pdr7" path="res://ASSETS/Beer/BeerFill2.png" id="4_f2ud1"]
+[ext_resource type="Texture2D" uid="uid://7xyngbvwxw8v" path="res://ASSETS/Beer/BeerFill3.png" id="5_rq3xt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u2puk"]
 friction = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58pt1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sl1cb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p530h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f2ud1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rq3xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sl1cb")
+}],
+"loop": false,
+"name": &"fill",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfh48"]
 size = Vector2(10, 18)
@@ -14,9 +45,13 @@ collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_u2puk")
 script = ExtResource("1_drgn2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
-texture = ExtResource("2_sl1cb")
+sprite_frames = SubResource("SpriteFrames_58pt1")
+animation = &"fill"
+autoplay = "fill"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tfh48")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

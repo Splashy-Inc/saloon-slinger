@@ -18,18 +18,20 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("slide"):
 		previous_cursor_x = viewport.get_mouse_position().x
+	if not cur_drink and $Bartender/Bartender.animation != "sling":
+		cur_drink = _spawn_drink()
+		cur_drink.filled.connect(_on_drink_filled)
+		$Bartop/Tap.play("pour")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("slide"):
-		cur_drink = _spawn_drink()
 		$Bartender/Bartender.play("tap")
-		$Bartop/Tap.play("pour")
 	
 	if event.is_action_released("slide") and cur_drink:
 		var player_impulse_x = viewport.get_mouse_position().x - previous_cursor_x
-		cur_drink.slide(player_impulse_x * 20)
-		$Bartender/Bartender.play("sling")
-		$Bartop/Tap.play("idle")
+		if cur_drink.slide(player_impulse_x * 20):
+			cur_drink = null
+			$Bartender/Bartender.play("sling")
 
 func _spawn_drink():
 	var drink = drink_scene.instantiate()
@@ -50,4 +52,10 @@ func _spawn_patron(spawn_point: Vector2, bar_slot: BarSlot):
 		$Patrons.add_child(new_patron)
 		new_patron.global_position = spawn_point
 		new_patron.bar_slot = bar_slot
-	
+
+func _on_drink_filled(drink: Drink):
+	if drink == cur_drink:
+		$Bartop/Tap.play("idle")
+
+func _on_bartender_animation_finished() -> void:
+	$Bartender/Bartender.play("default")
