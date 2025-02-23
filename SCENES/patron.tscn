@@ -68,7 +68,7 @@ script = ExtResource("3_51jdi")
 sprite_frames = SubResource("SpriteFrames_dsa2o")
 animation = &"walk"
 autoplay = "default"
-frame_progress = 0.621573
+frame_progress = 0.387662
 
 [node name="DrinkTimer" type="Timer" parent="."]
 wait_time = 0.5

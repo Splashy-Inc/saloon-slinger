@@ -17,6 +17,10 @@ boot_splash/image="res://SplashySplashScreen.png"
 boot_splash/fullsize=false
 config/icon="res://ASSETS/Player/Splorsh.png"
 
+[autoload]
+
+GameMusic="*res://SCENES/game_music.tscn"
+
 [display]
 
 window/size/viewport_width=640

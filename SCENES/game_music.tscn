@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64yrwii7b6nr"]
+
+[ext_resource type="AudioStream" uid="uid://bjvx1oiadoto2" path="res://ASSETS/Audio/saloon.ogg" id="1_fg3r6"]
+
+[node name="GameMusic" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_fg3r6")
+autoplay = true
+bus = &"BGMusic"
