@@ -1,18 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://bask1qktq747g"]
+[gd_scene load_steps=6 format=3 uid="uid://bask1qktq747g"]
 
 [ext_resource type="Texture2D" uid="uid://8eisahugqaf1" path="res://ASSETS/Bar.png" id="1_0lxil"]
+[ext_resource type="Script" path="res://SCRIPTS/bar.gd" id="1_4dfpa"]
+[ext_resource type="PackedScene" uid="uid://bbak2jlx6h5b" path="res://SCENES/bar_slot.tscn" id="2_5vd1o"]
+[ext_resource type="PackedScene" uid="uid://skhuah8qm0ks" path="res://SCENES/patron.tscn" id="2_8xjks"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i58nl"]
 radius = 8.0
-height = 604.0
+height = 590.0
 
 [node name="Bar" type="StaticBody2D"]
 collision_mask = 0
+script = ExtResource("1_4dfpa")
+
+[node name="BarSlots" type="Node2D" parent="."]
+
+[node name="BarSlot" parent="BarSlots" instance=ExtResource("2_5vd1o")]
+position = Vector2(-139, -28)
+
+[node name="Patron" parent="BarSlots/BarSlot" node_paths=PackedStringArray("bar_slot") instance=ExtResource("2_8xjks")]
+bar_slot = NodePath("..")
+
+[node name="BarSlot2" parent="BarSlots" instance=ExtResource("2_5vd1o")]
+position = Vector2(-67, -28)
+
+[node name="Patron" parent="BarSlots/BarSlot2" node_paths=PackedStringArray("bar_slot") instance=ExtResource("2_8xjks")]
+bar_slot = NodePath("..")
+
+[node name="BarSlot3" parent="BarSlots" instance=ExtResource("2_5vd1o")]
+position = Vector2(5, -28)
+
+[node name="Patron" parent="BarSlots/BarSlot3" node_paths=PackedStringArray("bar_slot") instance=ExtResource("2_8xjks")]
+bar_slot = NodePath("..")
+
+[node name="BarSlot4" parent="BarSlots" instance=ExtResource("2_5vd1o")]
+position = Vector2(77, -28)
+
+[node name="Patron" parent="BarSlots/BarSlot4" node_paths=PackedStringArray("bar_slot") instance=ExtResource("2_8xjks")]
+bar_slot = NodePath("..")
+
+[node name="BarSlot5" parent="BarSlots" instance=ExtResource("2_5vd1o")]
+position = Vector2(149, -28)
+
+[node name="Patron" parent="BarSlots/BarSlot5" node_paths=PackedStringArray("bar_slot") instance=ExtResource("2_8xjks")]
+bar_slot = NodePath("..")
+
+[node name="BarSlot6" parent="BarSlots" instance=ExtResource("2_5vd1o")]
+position = Vector2(221, -28)
+
+[node name="Patron" parent="BarSlots/BarSlot6" node_paths=PackedStringArray("bar_slot") instance=ExtResource("2_8xjks")]
+bar_slot = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0lxil")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-24, 7.5)
+position = Vector2(-18, 7.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_i58nl")
+
+[connection signal="emptied" from="BarSlots/BarSlot" to="." method="_on_bar_slot_emptied"]
+[connection signal="emptied" from="BarSlots/BarSlot2" to="." method="_on_bar_slot_emptied"]
+[connection signal="emptied" from="BarSlots/BarSlot3" to="." method="_on_bar_slot_emptied"]
+[connection signal="emptied" from="BarSlots/BarSlot4" to="." method="_on_bar_slot_emptied"]
+[connection signal="emptied" from="BarSlots/BarSlot5" to="." method="_on_bar_slot_emptied"]
+[connection signal="emptied" from="BarSlots/BarSlot6" to="." method="_on_bar_slot_emptied"]

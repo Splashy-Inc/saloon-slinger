@@ -7,4 +7,4 @@ func _on_pause_button_pressed() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		_on_pause_pressed()
+		_on_pause_button_pressed()

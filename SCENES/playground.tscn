@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene load_steps=18 format=3 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="Texture2D" uid="uid://civ6bqg82r1lu" path="res://ASSETS/BackGround.png" id="1_thoma"]
@@ -6,14 +6,75 @@
 [ext_resource type="PackedScene" uid="uid://drl0fag3aodkn" path="res://SCENES/drink.tscn" id="5_ucqmk"]
 [ext_resource type="PackedScene" uid="uid://bask1qktq747g" path="res://SCENES/bar.tscn" id="5_ur80v"]
 [ext_resource type="Texture2D" uid="uid://b6lt1b82nsbjx" path="res://ASSETS/Player/Splorsh.png" id="6_kw675"]
-[ext_resource type="Texture2D" uid="uid://djkhxyhac8654" path="res://ASSETS/TapOff.png" id="6_mxud1"]
-[ext_resource type="Texture2D" uid="uid://bkut50eelmv54" path="res://ASSETS/Door.png" id="7_eajuj"]
+[ext_resource type="Texture2D" uid="uid://dvmhs5l17ok6o" path="res://ASSETS/TapOff.png" id="6_mxud1"]
+[ext_resource type="Texture2D" uid="uid://d1jiwjtrtbsy3" path="res://ASSETS/Door.png" id="7_eajuj"]
+[ext_resource type="Texture2D" uid="uid://cb82fparxttyy" path="res://ASSETS/TapOn.png" id="7_i3nhs"]
+[ext_resource type="AudioStream" uid="uid://b6t1mynwmg0y6" path="res://ASSETS/Audio/water_leak.ogg" id="8_untao"]
+[ext_resource type="Texture2D" uid="uid://blaoqyvlttjou" path="res://ASSETS/Player/SplorshSling.png" id="9_jygwl"]
+[ext_resource type="Texture2D" uid="uid://dcjtm7ykd40o0" path="res://ASSETS/Player/SplorshTap.png" id="10_e26ao"]
+[ext_resource type="PackedScene" uid="uid://bxwj3vvikmli0" path="res://SCENES/hud.tscn" id="12_gvr3o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbf1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mxud1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i3nhs")
+}],
+"loop": true,
+"name": &"pour",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lp4cc"]
+streams_count = 1
+stream_0/stream = ExtResource("8_untao")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ixy6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kw675")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_jygwl")
+}],
+"loop": false,
+"name": &"sling",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e26ao")
+}],
+"loop": true,
+"name": &"tap",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbnqf"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Playground" type="Node"]
 script = ExtResource("1_5e8d0")
 drink_scene = ExtResource("5_ucqmk")
+patron_scene = ExtResource("4_00h3x")
 
 [node name="Background" type="Node2D" parent="."]
+z_index = -1
 
 [node name="BackGround" type="Sprite2D" parent="Background"]
 position = Vector2(320, 180)
@@ -22,33 +83,22 @@ texture = ExtResource("1_thoma")
 [node name="Patrons" type="Node2D" parent="."]
 position = Vector2(0, 75)
 
-[node name="Patron" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(180, 152)
-
-[node name="Patron7" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(252, 152)
-
-[node name="Patron8" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(324, 152)
-
-[node name="Patron9" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(396, 152)
-
-[node name="Patron10" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(468, 152)
-
-[node name="Patron11" parent="Patrons" instance=ExtResource("4_00h3x")]
-position = Vector2(540, 152)
-
 [node name="Bartop" type="Node2D" parent="."]
 position = Vector2(0, 75)
 
 [node name="Bar" parent="Bartop" instance=ExtResource("5_ur80v")]
 position = Vector2(319, 180)
 
-[node name="Tap" type="Sprite2D" parent="Bartop"]
+[node name="Tap" type="AnimatedSprite2D" parent="Bartop"]
 position = Vector2(20, 148)
-texture = ExtResource("6_mxud1")
+sprite_frames = SubResource("SpriteFrames_tbf1d")
+animation = &"pour"
+autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Bartop/Tap"]
+stream = SubResource("AudioStreamRandomizer_lp4cc")
+volume_db = -7.0
+pitch_scale = 0.7
 
 [node name="DrinkSpawnPoint" type="Marker2D" parent="Bartop"]
 position = Vector2(22, 170)
@@ -59,12 +109,28 @@ position = Vector2(22, 170)
 position = Vector2(600, 170)
 
 [node name="Door" type="Sprite2D" parent="Bartop"]
+z_index = -1
 position = Vector2(409, -35)
 texture = ExtResource("7_eajuj")
 
 [node name="Bartender" type="Node2D" parent="."]
 position = Vector2(0, 75)
 
-[node name="Bartender" type="Sprite2D" parent="Bartender"]
+[node name="Bartender" type="AnimatedSprite2D" parent="Bartender"]
 position = Vector2(47, 194)
-texture = ExtResource("6_kw675")
+sprite_frames = SubResource("SpriteFrames_8ixy6")
+animation = &"sling"
+autoplay = "default"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 81.0
+offset_right = 202.0
+offset_bottom = 104.0
+text = "Click + drag or swipe right"
+label_settings = SubResource("LabelSettings_xbnqf")
+
+[node name="HUD" parent="." instance=ExtResource("12_gvr3o")]
+
+[connection signal="bar_slot_emptied" from="Bartop/Bar" to="." method="_on_bar_slot_emptied"]
+[connection signal="animation_finished" from="Bartender/Bartender" to="." method="_on_bartender_animation_finished"]
