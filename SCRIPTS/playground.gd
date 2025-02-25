@@ -17,8 +17,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("slide"):
-		previous_cursor_x = viewport.get_mouse_position().x
 	if not cur_drink and $Bartender/Bartender.animation != "sling":
 		cur_drink = _spawn_drink()
 		cur_drink.filled.connect(_on_drink_filled)
@@ -28,20 +26,23 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("slide"):
 		$Bartender/Bartender.play("tap")
+		previous_cursor_x = viewport.get_mouse_position().x
 	
 	if event.is_action_released("slide") and cur_drink:
 		var player_impulse_x = viewport.get_mouse_position().x - previous_cursor_x
-		if mobile_drag_speed != Vector2.ZERO:
-			player_impulse_x = mobile_drag_speed.x
+		#if mobile_drag_speed != Vector2.ZERO:
+			#player_impulse_x = mobile_drag_speed.x
+			#$Label.text = str(player_impulse_x)
 		
-		if player_impulse_x > 0 and cur_drink.slide(player_impulse_x * 20):
+		if player_impulse_x > 0 and cur_drink.slide(player_impulse_x * 4):
 			cur_drink = null
 			$Bartender/Bartender.play("sling")
 			return
 		$Bartender/Bartender.play("default")
 	
-	if event is InputEventScreenDrag:
-		mobile_drag_speed = event.relative
+	#if event is InputEventScreenDrag:
+		#mobile_drag_speed = event.relative
+		#$Label.text = str(mobile_drag_speed)
 		
 func _spawn_drink():
 	var drink = drink_scene.instantiate()
